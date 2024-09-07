@@ -33,7 +33,7 @@ class CustomFilter extends BaseFilter implements FilterInterface
                 continue;
             }
 
-            $this->{$name}($value, $operand);
+            $this->{$name}($value, $this->operandMapper($operand));
         }
     }
 }
