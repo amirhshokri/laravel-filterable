@@ -1,6 +1,7 @@
 {
     "name": "amirhshokri/laravel-filterable",
     "description": "A better solution to add filter functionality to your laravel models.",
+    "license": "MIT",
     "type": "library",
     "autoload": {
         "psr-4": {
@@ -26,6 +27,6 @@
             ]
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
