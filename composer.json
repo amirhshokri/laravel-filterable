@@ -26,5 +26,7 @@
                 "Amirhshokri\\LaravelFilterable\\Providers\\LaravelFilterableServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
