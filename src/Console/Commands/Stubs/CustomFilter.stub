@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ mustExtendClassNamespace }};
+
+class {{ className }} extends {{ mustExtendClass }}
+{
+    //TODO: Add your custom filter logic here.
+}
