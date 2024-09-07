@@ -2,7 +2,7 @@
     "name": "amirhshokri/laravel-filterable",
     "description": "A better solution to add filter functionality to your laravel models.",
     "type": "library",
-    "license": "MIT",
+    "license": "",
     "autoload": {
         "psr-4": {
             "Amirhshokri\\LaravelFilterable\\": "src/"
