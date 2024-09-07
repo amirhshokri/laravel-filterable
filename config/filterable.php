@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'auto_discovery' => true,
+    'auto_discovery' => false,
     'namespace' => 'App\\Filterable\\Custom',
     'suffix' => 'Filter',
 ];
