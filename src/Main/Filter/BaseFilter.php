@@ -29,6 +29,38 @@ class BaseFilter
     }
 
     /**
+     * @param array $filterItem
+     * @param array|null $acceptableFilterParameters
+     * @return bool
+     */
+    protected function isParameterNameAcceptable(array $filterItem, array $acceptableFilterParameters = null): bool
+    {
+        if ($acceptableFilterParameters) {
+            return in_array($filterItem['name'], $acceptableFilterParameters);
+        }
+
+        return true;
+    }
+
+    /**
+     * @param string $operand
+     * @return string|null
+     */
+    protected function operandMapper(string $operand): ?string
+    {
+        $operandsMap = [
+            'isEqualTo' => '=',
+            'isNotEqualTo' => '!=',
+            'greaterThan' => '>',
+            'lessThan' => '<',
+            'greaterThanOrEqualTo' => '>=',
+            'lessThanOrEqualTo' => '<=',
+        ];
+
+        return $operandsMap[$operand] ?? null;
+    }
+
+    /**
      * @param Builder $eloquentBuilder
      * @param string $name
      * @param string $operand
@@ -92,37 +124,5 @@ class BaseFilter
         }
 
         $eloquentBuilder->where($name, $mappedOperand, $value);
-    }
-
-    /**
-     * @param array $filterItem
-     * @param array|null $acceptableFilterParameters
-     * @return bool
-     */
-    protected function isParameterNameAcceptable(array $filterItem, array $acceptableFilterParameters = null): bool
-    {
-        if ($acceptableFilterParameters) {
-            return in_array($filterItem['name'], $acceptableFilterParameters);
-        }
-
-        return true;
-    }
-
-    /**
-     * @param string $operand
-     * @return string|null
-     */
-    private function operandMapper(string $operand): ?string
-    {
-        $operandsMap = [
-            'isEqualTo' => '=',
-            'isNotEqualTo' => '!=',
-            'greaterThan' => '>',
-            'lessThan' => '<',
-            'greaterThanOrEqualTo' => '>=',
-            'lessThanOrEqualTo' => '<=',
-        ];
-
-        return $operandsMap[$operand] ?? null;
     }
 }
