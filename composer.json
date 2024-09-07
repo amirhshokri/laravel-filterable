@@ -1,6 +1,6 @@
 {
     "name": "amirhshokri/laravel-filterable",
-    "description": "A better solution to add filter functionality to your laravel app.",
+    "description": "A better solution to add filter functionality to your laravel models.",
     "type": "library",
     "license": "MIT",
     "autoload": {
