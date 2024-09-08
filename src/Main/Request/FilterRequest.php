@@ -28,7 +28,7 @@ class FilterRequest
         foreach ($requestParameters as $parameter) {
             $preparedRequestParameters["filters"][] = [
                 "name" => $parameter[0],
-                "operand" => $parameter[1],
+                "operator" => $parameter[1],
                 "value" => $parameter[2]
             ];
         }
@@ -60,7 +60,7 @@ class FilterRequest
             'filters' => 'array',
             'filters.*' => 'required|array',
             'filters.*.name' => 'required|string',
-            'filters.*.operand' => 'required|string|in:isEqualTo,isNotEqualTo,greaterThan,lessThan,greaterThanOrEqualTo,lessThanOrEqualTo,between,in,contains',
+            'filters.*.operator' => 'required|string|in:isEqualTo,isNotEqualTo,greaterThan,lessThan,greaterThanOrEqualTo,lessThanOrEqualTo,between,in,contains',
             'filters.*.value' => [new ValueRule()]
         ];
 

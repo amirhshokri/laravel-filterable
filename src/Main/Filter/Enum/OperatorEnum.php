@@ -2,7 +2,7 @@
 
 namespace Amirhshokri\LaravelFilterable\Main\Filter\Enum;
 
-class OperandEnum
+class OperatorEnum
 {
     public const IS_EQUAL_TO = 'isEqualTo';
     public const IS_NOT_EQUAL_TO = 'isNotEqualTo';

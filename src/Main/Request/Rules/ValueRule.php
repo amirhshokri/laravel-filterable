@@ -32,12 +32,12 @@ class ValueRule implements DataAwareRule, ValidationRule
     {
         $index = explode(".", $attribute)[1];
 
-        $operand = $this->data["filters"][$index]["operand"];
+        $operator = $this->data["filters"][$index]["operator"];
 
-        switch ($operand) {
+        switch ($operator) {
             case 'in':
                 if (is_array($value) === false) {
-                    $fail(":attribute must be an array when operand is \"$operand\".");
+                    $fail(":attribute must be an array when operator is \"$operator\".");
                     return;
                 }
 
@@ -50,7 +50,7 @@ class ValueRule implements DataAwareRule, ValidationRule
 
             case 'between':
                 if (is_array($value) === false) {
-                    $fail(":attribute must be an array when operand is \"$operand\".");
+                    $fail(":attribute must be an array when operator is \"$operator\".");
                     return;
                 }
 
@@ -63,7 +63,7 @@ class ValueRule implements DataAwareRule, ValidationRule
 
             default:
                 if (is_array($value) === true) {
-                    $fail(":attribute must not be an array when operand is \"$operand\".");
+                    $fail(":attribute must not be an array when operator is \"$operator\".");
                 }
 
                 break;

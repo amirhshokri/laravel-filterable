@@ -13,19 +13,19 @@ class BaseFilter
 
     /**
      * @param string $name
-     * @param string $operand
+     * @param string $operator
      * @param $value
      * @return void
      */
-    protected function prepareWhere(string $name, string $operand, $value): void
+    protected function prepareWhere(string $name, string $operator, $value): void
     {
-        $this->prepareWhereBetween($this->eloquentBuilder, $name, $operand, $value);
+        $this->prepareWhereBetween($this->eloquentBuilder, $name, $operator, $value);
 
-        $this->prepareWhereIn($this->eloquentBuilder, $name, $operand, $value);
+        $this->prepareWhereIn($this->eloquentBuilder, $name, $operator, $value);
 
-        $this->prepareWhereContains($this->eloquentBuilder, $name, $operand, $value);
+        $this->prepareWhereContains($this->eloquentBuilder, $name, $operator, $value);
 
-        $this->prepareNormalWhere($this->eloquentBuilder, $name, $operand, $value);
+        $this->prepareNormalWhere($this->eloquentBuilder, $name, $operator, $value);
     }
 
     /**
@@ -43,12 +43,12 @@ class BaseFilter
     }
 
     /**
-     * @param string $operand
+     * @param string $operator
      * @return string|null
      */
-    protected function operandMapper(string $operand): ?string
+    protected function operatorMapper(string $operator): ?string
     {
-        $operandsMap = [
+        $operatorsMap = [
             'isEqualTo' => '=',
             'isNotEqualTo' => '!=',
             'greaterThan' => '>',
@@ -57,19 +57,19 @@ class BaseFilter
             'lessThanOrEqualTo' => '<=',
         ];
 
-        return $operandsMap[$operand] ?? null;
+        return $operatorsMap[$operator] ?? null;
     }
 
     /**
      * @param Builder $eloquentBuilder
      * @param string $name
-     * @param string $operand
+     * @param string $operator
      * @param $value
      * @return void
      */
-    private function prepareWhereBetween(Builder $eloquentBuilder, string $name, string $operand, $value): void
+    private function prepareWhereBetween(Builder $eloquentBuilder, string $name, string $operator, $value): void
     {
-        if ($operand !== 'between') {
+        if ($operator !== 'between') {
             return;
         }
 
@@ -79,13 +79,13 @@ class BaseFilter
     /**
      * @param Builder $eloquentBuilder
      * @param string $name
-     * @param string $operand
+     * @param string $operator
      * @param $value
      * @return void
      */
-    private function prepareWhereIn(Builder $eloquentBuilder, string $name, string $operand, $value): void
+    private function prepareWhereIn(Builder $eloquentBuilder, string $name, string $operator, $value): void
     {
-        if ($operand !== 'in') {
+        if ($operator !== 'in') {
             return;
         }
 
@@ -95,13 +95,13 @@ class BaseFilter
     /**
      * @param Builder $eloquentBuilder
      * @param string $name
-     * @param string $operand
+     * @param string $operator
      * @param $value
      * @return void
      */
-    private function prepareWhereContains(Builder $eloquentBuilder, string $name, string $operand, $value): void
+    private function prepareWhereContains(Builder $eloquentBuilder, string $name, string $operator, $value): void
     {
-        if ($operand !== 'contains') {
+        if ($operator !== 'contains') {
             return;
         }
 
@@ -111,18 +111,18 @@ class BaseFilter
     /**
      * @param Builder $eloquentBuilder
      * @param string $name
-     * @param string $operand
+     * @param string $operator
      * @param $value
      * @return void
      */
-    private function prepareNormalWhere(Builder $eloquentBuilder, string $name, string $operand, $value): void
+    private function prepareNormalWhere(Builder $eloquentBuilder, string $name, string $operator, $value): void
     {
-        $mappedOperand = $this->operandMapper($operand);
+        $mappedOperator = $this->operatorMapper($operator);
 
-        if ($mappedOperand === null) {
+        if ($mappedOperator === null) {
             return;
         }
 
-        $eloquentBuilder->where($name, $mappedOperand, $value);
+        $eloquentBuilder->where($name, $mappedOperator, $value);
     }
 }

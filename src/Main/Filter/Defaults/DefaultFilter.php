@@ -25,10 +25,10 @@ class DefaultFilter extends BaseFilter implements FilterInterface
             }
 
             $name = $filterItem["name"];
-            $operand = $filterItem["operand"];
+            $operator = $filterItem["operator"];
             $value = $filterItem["value"];
 
-            $this->prepareWhere($name, $operand, $value);
+            $this->prepareWhere($name, $operator, $value);
         }
     }
 }

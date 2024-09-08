@@ -25,15 +25,15 @@ class CustomFilter extends BaseFilter implements FilterInterface
             }
 
             $name = $filterItem["name"];
-            $operand = $filterItem["operand"];
+            $operator = $filterItem["operator"];
             $value = $filterItem["value"];
 
             if (method_exists($this, $name) === false) {
-                $this->prepareWhere($name, $operand, $value);
+                $this->prepareWhere($name, $operator, $value);
                 continue;
             }
 
-            $this->{$name}($value, $this->operandMapper($operand));
+            $this->{$name}($value, $this->operatorMapper($operator));
         }
     }
 }
