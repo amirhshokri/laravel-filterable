@@ -31,7 +31,7 @@ trait Filterable
         /** @var DefaultFilter|CustomFilter $filter */
         $filter = $customFilter ?? $this->autoDiscoverFilter();
 
-        $filter->apply($query, $requestParameters, $this->getAcceptableFilterParameters());
+        $filter->apply($query, $requestParameters, $this->getAllowedFilterParameters());
     }
 
     /**
@@ -66,8 +66,8 @@ trait Filterable
     /**
      * @return array|null
      */
-    private function getAcceptableFilterParameters(): ?array
+    private function getAllowedFilterParameters(): ?array
     {
-        return (isset($this->filterableParameters)) ? $this->filterableParameters : null;
+        return (isset($this->allowedFilterParameters)) ? $this->allowedFilterParameters : null;
     }
 }

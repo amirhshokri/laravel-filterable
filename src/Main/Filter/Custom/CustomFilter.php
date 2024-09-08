@@ -11,16 +11,16 @@ class CustomFilter extends BaseFilter implements FilterInterface
     /**
      * @param Builder $builder
      * @param array $requestParameters
-     * @param array|null $acceptableFilterParameters
+     * @param array|null $allowedFilterParameters
      * @return void
      */
-    public function apply(Builder $builder, array $requestParameters, array $acceptableFilterParameters = null): void
+    public function apply(Builder $builder, array $requestParameters, array $allowedFilterParameters = null): void
     {
         $this->eloquentBuilder = $builder;
 
         foreach ($requestParameters["filters"] as $filterItem) {
 
-            if ($this->isParameterNameAcceptable($filterItem, $acceptableFilterParameters) === false) {
+            if ($this->isParameterNameAllowed($filterItem, $allowedFilterParameters) === false) {
                 continue;
             }
 
@@ -33,7 +33,7 @@ class CustomFilter extends BaseFilter implements FilterInterface
                 continue;
             }
 
-            $this->{$name}($value, $this->operatorMapper($operator));
+            $this->{$name}($value, $operator);
         }
     }
 }

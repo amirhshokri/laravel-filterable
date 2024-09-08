@@ -30,13 +30,13 @@ class BaseFilter
 
     /**
      * @param array $filterItem
-     * @param array|null $acceptableFilterParameters
+     * @param array|null $allowedFilterParameters
      * @return bool
      */
-    protected function isParameterNameAcceptable(array $filterItem, array $acceptableFilterParameters = null): bool
+    protected function isParameterNameAllowed(array $filterItem, array $allowedFilterParameters = null): bool
     {
-        if ($acceptableFilterParameters) {
-            return in_array($filterItem['name'], $acceptableFilterParameters);
+        if ($allowedFilterParameters) {
+            return in_array($filterItem['name'], $allowedFilterParameters);
         }
 
         return true;

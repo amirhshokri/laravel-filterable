@@ -9,8 +9,8 @@ interface FilterInterface
     /**
      * @param Builder $builder
      * @param array $requestParameters
-     * @param array|null $acceptableFilterParameters
+     * @param array|null $allowedFilterParameters
      * @return void
      */
-    public function apply(Builder $builder, array $requestParameters, array $acceptableFilterParameters = null): void;
+    public function apply(Builder $builder, array $requestParameters, array $allowedFilterParameters = null): void;
 }
