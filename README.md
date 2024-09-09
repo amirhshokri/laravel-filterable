@@ -1,5 +1,9 @@
 # Laravel filterable
 
+## Introduction
+
+Laravel Filterable helps you add efficient filtering logic to the Laravel query builder. You can use the default filter logic, define custom filter logic manually, or create it using the provided command with any suffix in any path you choose. By enabling auto-discovery mode, the package will automatically locate the desired filter class for you.
+
 ## Installation
 
 You can install the package via composer:
