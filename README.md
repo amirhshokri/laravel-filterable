@@ -101,7 +101,7 @@ There are several approaches for using the `filter()` method:
 
 ### Method 1: Passing a custom filter class
 
-You can pass a custom filter class to the `filter()` method to specify the filtering logic for your model:
+You can pass a custom filter class to the `filter()` method to enforce specific filtering logic for your model:
 
 ```php
 $users = \App\Models\User::query()
