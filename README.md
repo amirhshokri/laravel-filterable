@@ -248,7 +248,7 @@ class UserFilter extends CustomFilter
 
 ### Method 2: Using auto-discovery
 
-The package includes an auto-discovery feature that automatically detects custom filter classes based on the `namespace` and `suffix` parameters defined in the config file.
+The package includes an auto-discovery feature that automatically detects custom filter classes based on the `namespace` and `suffix` parameters defined in the config file. This feature is useful when you prefer not to pass a custom filter class to the `filter()` method.
 
 When `auto-discovery` is enabled, it will search for a filter class named `{ModelName}{Suffix}.php` (e.g., UserFilter.php in App\Filterable\Custom). If the custom filter class is not found in the expected location, an exception will be thrown.
 
