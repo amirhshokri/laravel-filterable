@@ -126,8 +126,6 @@ php artisan make:filter <FilterName> --path=Path\To\Filter\Class
 Example of a generated custom filter class:
 
 ```php
-namespace App\Custom;
-
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
 
 class UserFilter extends CustomFilter
@@ -135,8 +133,6 @@ class UserFilter extends CustomFilter
     //TODO: Add your custom filter logic here.
 }
 ```
-
-#### Extending your custom filter logic
 
 Once you have created a custom filter class, you can extend the filtering logic for each field you wish to filter. Add a function in the custom filter class that corresponds to the `name` field in your request body:
 
@@ -193,7 +189,8 @@ class UserFilter extends CustomFilter
 
 #### Nested filters
 
-For more complex filtering scenarios, you can call `filter()` within another `filter()` to apply multiple conditions. For example, to filter users based on post titles:
+For more complex filtering scenarios, you can call `filter()` within another `filter()` to apply multiple conditions, such as filtering users based on post titles. 
+Additionally, ensure that the Filterable trait is added to the `Post` model.
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
@@ -252,7 +249,7 @@ class UserFilter extends CustomFilter
 
 The package includes an auto-discovery feature that automatically detects custom filter classes based on the `namespace` and `suffix` parameters defined in the config file.
 
-When `auto-discovery` is enabled, it will search for a filter class named `{model}{suffix}.php` (e.g., UserFilter.php in App\Filterable\Custom). If the custom filter class is not found in the expected location, an exception will be thrown.
+When `auto-discovery` is enabled, it will search for a filter class named `{ModelName}{Suffix}.php` (e.g., UserFilter.php in App\Filterable\Custom). If the custom filter class is not found in the expected location, an exception will be thrown.
 
 #### Notes
 
@@ -280,7 +277,7 @@ class UserFilter extends CustomFilter
 
 ### Method 3: Using default filter
 
-If you don’t provide a custom filter class for the `filter()` method and auto-discovery is turned off, the package will use the default filter functionality for your model, as explained in the "Usage" section above.
+If you don’t provide a custom filter class for the `filter()` method and auto-discovery is turned off, the package will use the default filter functionality for your model, as explained in the [Simple usage](## Simple usage) section.
 
 ## Credits
 
