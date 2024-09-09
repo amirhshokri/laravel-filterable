@@ -26,7 +26,7 @@ return [
 
 The usage of this parameters will be discussed in continue.
 
-## Usage
+## Simple usage
 
 ### Step 1: Add the Filterable trait to your model
 
@@ -117,6 +117,8 @@ You can either create a custom filter class manually or generate one using the f
 php artisan make:filter <FilterName> --path=Path\To\Filter\Class
 ```
 
+#### Notes
+
 * This command uses the `suffix` parameter from the config file to create the filter class. The file name must end with the specified suffix (e.g., MyNewUserFilter).
 
 * If the `--path` option is not provided, the `namespace` parameter from the config file will be used as the default path.
@@ -154,6 +156,8 @@ class UserFilter extends CustomFilter
     }
 }
 ```
+
+#### Notes
 
 * Each function can accept `$value` and `$operator` arguments (both, one, or none). `$value` corresponds to the value in the request, and `$operator` corresponds to the operator.
 
@@ -193,7 +197,6 @@ For more complex filtering scenarios, you can call `filter()` within another `fi
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
-use Amirhshokri\LaravelFilterable\Main\Filter\Enum\OperatorEnum;
 
 class UserFilter extends CustomFilter
 {
@@ -208,7 +211,7 @@ class UserFilter extends CustomFilter
 }
 ```
 
-Finally, make a request:
+Then, make a request:
 
 ```json
 {
@@ -221,6 +224,8 @@ Finally, make a request:
   ]
 }
 ```
+
+### Note:
 
 * You can add multiple conditions using `OperatorEnum` like this:
 
