@@ -32,7 +32,7 @@ The usage of this parameters will be discussed in continue.
 
 ## Simple usage
 
-### Step 1: Add the Filterable trait to your model
+Step 1: Add the Filterable trait to your model
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filterable;
@@ -58,7 +58,7 @@ class User extends Authenticatable
 
 If `$allowedFilterParameters` is not defined, all parameters will be allowed for filtering.
 
-### Step 2: Add the `filter()` method to your query builder
+Step 2: Add the `filter()` method to your query builder
 
 ```php
 $users = \App\Models\User::query()
@@ -66,7 +66,7 @@ $users = \App\Models\User::query()
    ->get();
 ```
 
-### Step 3: Make a request
+Step 3: Make a request
 
 ```json
 {
@@ -85,7 +85,7 @@ $users = \App\Models\User::query()
 }
 ```
 
-#### Supported operators:
+#### Supported operators
 
 The available operators are:
 
@@ -99,7 +99,7 @@ The available operators are:
 * in
 * contains
 
-## How to use `filter()` method?
+## Deep Dive into `filter()` method
 
 There are several approaches for using the `filter()` method:
 
@@ -121,7 +121,7 @@ You can either create a custom filter class manually or generate one using the f
 php artisan make:filter <FilterName> --path=Path\To\Filter\Class
 ```
 
-#### Notes
+#### Notes:
 
 * This command uses the `suffix` parameter from the config file to create the filter class. The file name must end with the specified suffix (e.g., MyNewUserFilter).
 
@@ -157,7 +157,7 @@ class UserFilter extends CustomFilter
 }
 ```
 
-#### Notes
+#### Notes:
 
 * Each function can accept `$value` and `$operator` arguments. `$value` represents the value in the request, and `$operator` represents the operator.
 
@@ -195,6 +195,8 @@ class UserFilter extends CustomFilter
 
 For more complex filtering scenarios, you can call `filter()` within another `filter()` to apply multiple conditions, such as filtering users based on post titles. 
 
+#### Note:
+
 * Additionally, ensure that the Filterable trait is added to the `Post` model.
 
 ```php
@@ -227,7 +229,7 @@ Then, make a request:
 }
 ```
 
-#### Note
+#### Note:
 
 * You can add multiple conditions using `OperatorEnum` like this:
 
@@ -256,7 +258,7 @@ The package includes an auto-discovery feature that automatically detects custom
 
 When `auto-discovery` is enabled, it will search for a filter class named `{ModelName}{Suffix}.php` (e.g., UserFilter.php in App\Filterable\Custom). If the custom filter class is not found in the expected location, an exception will be thrown.
 
-#### Notes
+#### Notes:
 
 * Enable or disable auto-discovery locally: imagine a scenario where auto-discovery is enabled globally, but you don't want to use it for certain `filter()` call, or vice versa. In such cases, you can simply call the `setFilterAutoDiscovery()` method, passing a boolean value, before invoking the `filter()` method:
 
