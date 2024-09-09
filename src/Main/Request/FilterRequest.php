@@ -61,7 +61,9 @@ class FilterRequest
             'filters.*' => 'required|array',
             'filters.*.name' => 'required|string',
             'filters.*.operator' => 'required|string|in:isEqualTo,isNotEqualTo,greaterThan,lessThan,greaterThanOrEqualTo,lessThanOrEqualTo,between,in,contains',
-            'filters.*.value' => [new ValueRule()]
+            'filters.*.value' => function ($attribute, $value, $fail) {
+                return new ValueRule();
+            }
         ];
 
         $validator = Validator::make($requestParameters, $rules);
