@@ -225,7 +225,7 @@ Then, make a request:
 }
 ```
 
-#### Note:
+#### Note
 
 * You can add multiple conditions using `OperatorEnum` like this:
 
