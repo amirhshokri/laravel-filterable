@@ -155,7 +155,7 @@ class UserFilter extends CustomFilter
 
 #### Notes
 
-* Each function can accept `$value` and `$operator` arguments (both, one, or none). `$value` corresponds to the value in the request, and `$operator` corresponds to the operator.
+* Each function can accept `$value` and `$operator` arguments. While `$value` is required, `$operator` is optional. `$value` represents the value in the request, and `$operator` represents the operator.
 
 * Use the `operatorMapper()` method to map operators to database equivalents, such as:
 
