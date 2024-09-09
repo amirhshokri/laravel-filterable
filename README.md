@@ -32,7 +32,7 @@ The usage of this parameters will be discussed in continue.
 
 ## Simple usage
 
-Step 1: Add the Filterable trait to your model
+#### Step 1: Add the Filterable trait to your model
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filterable;
@@ -58,7 +58,7 @@ class User extends Authenticatable
 
 If `$allowedFilterParameters` is not defined, all parameters will be allowed for filtering.
 
-Step 2: Add the `filter()` method to your query builder
+#### Step 2: Add the `filter()` method to your query builder
 
 ```php
 $users = \App\Models\User::query()
@@ -66,7 +66,7 @@ $users = \App\Models\User::query()
    ->get();
 ```
 
-Step 3: Make a request
+#### Step 3: Make a request
 
 ```json
 {
