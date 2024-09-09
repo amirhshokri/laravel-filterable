@@ -5,7 +5,7 @@
 You can install the package via composer:
 
 ```bash
-composer require amirhshokri/laravel-filterable:dev-master
+composer require amirhshokri/laravel-filterable
 ```
 
 You can publish the config file with:
