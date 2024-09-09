@@ -155,7 +155,7 @@ class UserFilter extends CustomFilter
 
 #### Notes
 
-* Each function can accept `$value` and `$operator` arguments. While `$value` is required, `$operator` is optional. `$value` represents the value in the request, and `$operator` represents the operator.
+* Each function can accept `$value` and `$operator` arguments. `$value` represents the value in the request, and `$operator` represents the operator.
 
 * Use the `operatorMapper()` method to map operators to database equivalents, such as:
 
@@ -237,9 +237,9 @@ class UserFilter extends CustomFilter
     {
         $this->eloquentBuilder->whereHas('posts', function ($query) use ($value, $operator) {
             $query->setFilterParameters([
+                    ["id", OperatorEnum::IS_NOT_EQUAL_TO, 10],
                     ["title", $operator, $value],
-                    ["slug", OperatorEnum::CONTAINS, 'another pizza'],
-                    ["id", OperatorEnum::IS_NOT_EQUAL_TO, 10]
+                    ["slug", OperatorEnum::CONTAINS, 'another pizza']
                 ])->filter();
         });
     }
