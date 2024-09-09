@@ -260,7 +260,6 @@ When `auto-discovery` is enabled, it will search for a filter class named `{mode
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
-use Amirhshokri\LaravelFilterable\Main\Filter\Enum\OperatorEnum;
 
 class UserFilter extends CustomFilter
 {
