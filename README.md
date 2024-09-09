@@ -190,7 +190,8 @@ class UserFilter extends CustomFilter
 #### Nested filters
 
 For more complex filtering scenarios, you can call `filter()` within another `filter()` to apply multiple conditions, such as filtering users based on post titles. 
-Additionally, ensure that the Filterable trait is added to the `Post` model.
+
+* Additionally, ensure that the Filterable trait is added to the `Post` model.
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
