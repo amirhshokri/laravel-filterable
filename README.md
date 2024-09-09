@@ -253,7 +253,7 @@ When `auto-discovery` is enabled, it will search for a filter class named `{Mode
 
 #### Notes
 
-* Enable or disable auto-discovery locally: imagine a scenario where auto-discovery is enabled globally, but you don't want to use it for certain `filter()` call, or vice versa. In such cases, you can simply call the `setFilterDiscovery()` method, passing a boolean value, before invoking the `filter()` method:
+* Enable or disable auto-discovery locally: imagine a scenario where auto-discovery is enabled globally, but you don't want to use it for certain `filter()` call, or vice versa. In such cases, you can simply call the `setFilterAutoDiscovery()` method, passing a boolean value, before invoking the `filter()` method:
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
@@ -266,7 +266,7 @@ class UserFilter extends CustomFilter
             $query->setFilterParameters([
                     ["title", $operator, $value]
                 ])
-                ->setFilterDiscovery(false)
+                ->setFilterAutoDiscovery(false)
                 ->filter();
         });
     }

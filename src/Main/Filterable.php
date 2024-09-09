@@ -14,7 +14,7 @@ use Exception;
 /**
  * @method filter(CustomFilter $customFilter = null)
  * @method setFilterParameters(array $filterParameters)
- * @method setFilterDiscovery(bool $filterDiscovery)
+ * @method setFilterAutoDiscovery(bool $filterDiscovery)
  */
 trait Filterable
 {
@@ -49,7 +49,7 @@ trait Filterable
      * @param bool $filterDiscovery
      * @return void
      */
-    public function scopeSetFilterDiscovery(Builder $query, bool $filterDiscovery): void
+    public function scopeSetFilterAutoDiscovery(Builder $query, bool $filterDiscovery): void
     {
         FilterConfig::setAutoDiscovery($filterDiscovery);
     }
