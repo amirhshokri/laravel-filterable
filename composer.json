@@ -1,6 +1,6 @@
 {
     "name": "amirhshokri/laravel-filterable",
-    "description": "A better solution to add filter functionality to laravel query builder.",
+    "description": "A better solution to add filter functionality to Laravel query builder.",
     "license": "MIT",
     "type": "library",
     "autoload": {
