@@ -106,13 +106,13 @@ class CreateCustomFilter extends GeneratorCommand
             }
 
             return $this->option('path');
-        } else {
-            if (strlen(FilterConfig::getNamespace()) === 0) {
-                $this->error('"' . FilterConfig::getConfigFilePath() . '": Invalid namespace was set.');
-                exit;
-            }
-
-            return FilterConfig::getNamespace();
         }
+
+        if (strlen(FilterConfig::getNamespace()) === 0) {
+            $this->error('"' . FilterConfig::getConfigFilePath() . '": Invalid namespace was set.');
+            exit;
+        }
+
+        return FilterConfig::getNamespace();
     }
 }
