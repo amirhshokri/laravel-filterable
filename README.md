@@ -284,7 +284,7 @@ class UserFilter extends CustomFilter
 
 ### Method 3: Using default filter
 
-If you don’t provide a custom filter class for the `filter()` method and auto-discovery is turned off, the package will use the default filter functionality for your model, as explained previously in the [Simple usage](#simple-usage) section.
+If you don’t provide a custom filter class for the `filter()` method and auto-discovery is turned off, the package will use the default filter functionality for your model, as explained previously in the [Basic usage](#basic-usage) section.
 
 ## Credits
 
