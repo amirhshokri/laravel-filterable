@@ -30,7 +30,7 @@ return [
 
 The usage of this parameters will be discussed in continue.
 
-## Simple usage
+## Basic usage
 
 #### Step 1: Add the Filterable trait to your model
 
