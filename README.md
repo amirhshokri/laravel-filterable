@@ -18,6 +18,16 @@ You can publish the config file with:
 php artisan vendor:publish --tag="laravel-filterable-config"
 ```
 
+This is the contents of the published config file:
+
+```php
+return [
+    'auto_discovery' => false,
+    'namespace' => 'App\\Filterable\\Custom',
+    'suffix' => 'Filter',
+];
+```
+
 ## Basic usage
 
 1 - Add the Filterable trait to your model.
@@ -92,10 +102,12 @@ class UserFilter extends CustomFilter
 {
     public function id($value, string $operator): void
     {
+        //Custom filter logic here
     }
     
     public function email($value, string $operator): void
     {
+        //Custom filter logic here
     }
 }
 ```
@@ -104,11 +116,9 @@ class UserFilter extends CustomFilter
 
 ### Method 3: Using auto-discovery
 
-The package includes an auto-discovery feature that automatically detects custom filter classes based on the `namespace` and `suffix` parameters defined in the config file. This feature is useful when you prefer not to pass a custom filter class to the `filter()` method.
+When `auto-discovery` is enabled, this package will search for a filter class named `{ModelName}{Suffix}.php` using the `namespace` and `suffix` parameters defined in the config file. If the custom filter class is not found in the expected location, an exception will be thrown.
 
-When `auto-discovery` is enabled, it will search for a filter class named `{ModelName}{Suffix}.php`. If the custom filter class is not found in the expected location, an exception will be thrown.
-
-- If you don't want to use auto-discovery for a certain `filter()` call, you can set `setFilterAutoDiscovery()` to false:
+- If you don't want to use auto-discovery for a certain `filter()` call, you can set `setFilterAutoDiscovery()` to `false`:
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
