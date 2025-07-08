@@ -62,11 +62,11 @@ $users = \App\Models\User::query()
 
 ### Method 1: Using default filter
 
-If you don’t provide a custom filter class for the `filter()` method and auto-discovery is turned off in thr config file, the package will use the default filter functionality for your model, as explained previously in the [Basic usage](#basic-usage) section.
+If you don’t provide a custom filter class for the `filter()` method and `auto-discovery` is turned off in the config file, the package will use the default filter functionality for your model, as explained previously in the [Basic usage](#basic-usage) section.
 
 ### Method 2: Passing a custom filter class
 
-You can pass a custom filter class to the `filter()` method to enforce specific filtering logic for your model:
+You can pass a custom filter class to the `filter()` method to **enforce** specific filtering logic for your model:
 
 ```php
 $users = \App\Models\User::query()
@@ -92,12 +92,10 @@ class UserFilter extends CustomFilter
 {
     public function id($value, string $operator): void
     {
-        //Custom filter logic for 'id' column
     }
     
     public function email($value, string $operator): void
     {
-        //Custom filter logic for 'email' column
     }
 }
 ```
@@ -108,7 +106,7 @@ class UserFilter extends CustomFilter
 
 The package includes an auto-discovery feature that automatically detects custom filter classes based on the `namespace` and `suffix` parameters defined in the config file. This feature is useful when you prefer not to pass a custom filter class to the `filter()` method.
 
-When auto-discovery is enabled, it will search for a filter class named `{ModelName}{Suffix}.php`. If the custom filter class is not found in the expected location, an exception will be thrown.
+When `auto-discovery` is enabled, it will search for a filter class named `{ModelName}{Suffix}.php`. If the custom filter class is not found in the expected location, an exception will be thrown.
 
 - If you don't want to use auto-discovery for a certain `filter()` call, you can set `setFilterAutoDiscovery()` to false:
 
@@ -121,7 +119,7 @@ class UserFilter extends CustomFilter
     {
         $this->eloquentBuilder->whereHas('posts', function ($query) use ($value, $operator) {
             $query->setFilterParameters([
-                    ["title", $operator, $value]
+                    ['title', $operator, $value]
                 ])
                 ->setFilterAutoDiscovery(false)
                 ->filter();
@@ -132,7 +130,7 @@ class UserFilter extends CustomFilter
 
 ### Method 4: Nested filters
 
-For more complex filtering scenarios, you can call `filter()` within another `filter()` to apply multiple conditions, such as filtering users based on post titles. Make sure the Filterable trait is added to all relevant models:
+For more complex filtering scenarios, you can call `filter()` within another `filter()` to apply multiple conditions, such as filtering users based on their post titles. Make sure the Filterable trait is added to all relevant models:
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
@@ -143,7 +141,7 @@ class UserFilter extends CustomFilter
     {
         $this->eloquentBuilder->whereHas('posts', function ($query) use ($value, $operator) {
             $query->setFilterParameters([
-                    ["title", $operator, $value]
+                    ['title', $operator, $value]
                 ])->filter();
         });
     }
@@ -165,7 +163,7 @@ class User extends Authenticatable
 }
 ```
 
-2 - Use the `operatorMapper()` method to map operators to database equivalents:
+2 - Use the `operatorMapper()` method to map operators to their database equivalents:
 
 |     **Supported Operator**     |  **Mapped Version** |
 |:-------------------------------|---------------------|
@@ -210,9 +208,9 @@ class UserFilter extends CustomFilter
     {
         $this->eloquentBuilder->whereHas('posts', function ($query) use ($value, $operator) {
             $query->setFilterParameters([
-                    ["id", OperatorEnum::IS_NOT_EQUAL_TO, 10],
-                    ["title", $operator, $value],
-                    ["slug", OperatorEnum::CONTAINS, 'another pizza']
+                    ['id', OperatorEnum::IS_NOT_EQUAL_TO, 10],
+                    ['title', $operator, $value],
+                    ['slug', OperatorEnum::CONTAINS, 'another pizza']
                 ])->filter();
         });
     }
