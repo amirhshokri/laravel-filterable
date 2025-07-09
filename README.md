@@ -190,7 +190,7 @@ class UserFilter extends CustomFilter
 }
 ```
 
-3 - You can also use `OperatorEnum`:
+3 - `OperatorEnum` can be used as needed:
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
