@@ -194,11 +194,6 @@ use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
 
 class UserFilter extends CustomFilter
 {
-    public function id($value): void
-    {
-        $this->eloquentBuilder->where('id', $value);
-    }
-    
     public function mobile($value, string $operator): void
     {
         $this->eloquentBuilder->where('mobile', $this->operatorMapper($operator), $value);
