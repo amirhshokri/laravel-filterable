@@ -118,7 +118,7 @@ class UserFilter extends CustomFilter
 
 When `auto-discovery` is enabled, this package will search for a filter class named `{ModelName}{Suffix}.php` using the `namespace` and `suffix` parameters defined in the config file. If the custom filter class is not found in the expected location, an exception will be thrown.
 
-- If you don't want to use auto-discovery for a specific `filter()` call, you can set `setFilterAutoDiscovery(false)` before calling `filter()`:
+- If you don't want to use auto-discovery for a specific `filter()` call, you can use `setFilterAutoDiscovery(false)` before calling `filter()`:
 
 ```php
 $users = \App\Models\User::query()
@@ -129,7 +129,7 @@ $users = \App\Models\User::query()
 
 ### Method 4: Nested filters
 
-For more complex filtering scenarios, you can call `filter()` within another `filter()` to apply multiple conditions, such as filtering users based on their post titles. Make sure the Filterable trait is added to all relevant models:
+In more complex scenarios, you can nest another `filter()` within your current filter logic to apply multiple conditions, such as filtering users based on their post titles. Make sure the Filterable trait is added to all relevant models:
 
 ```php
 use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
