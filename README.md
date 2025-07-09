@@ -118,24 +118,13 @@ class UserFilter extends CustomFilter
 
 When `auto-discovery` is enabled, this package will search for a filter class named `{ModelName}{Suffix}.php` using the `namespace` and `suffix` parameters defined in the config file. If the custom filter class is not found in the expected location, an exception will be thrown.
 
-- If you don't want to use auto-discovery for a certain `filter()` call, you can set `setFilterAutoDiscovery()` to `false`:
+- If you don't want to use auto-discovery for a specific `filter()` call, you can set `setFilterAutoDiscovery(false)` before calling `filter()`:
 
 ```php
-use Amirhshokri\LaravelFilterable\Main\Filter\Custom\CustomFilter;
-
-class UserFilter extends CustomFilter
-{
-    public function title($value, string $operator): void
-    {
-        $this->eloquentBuilder->whereHas('posts', function ($query) use ($value, $operator) {
-            $query->setFilterParameters([
-                    ['title', $operator, $value]
-                ])
-                ->setFilterAutoDiscovery(false)
-                ->filter();
-        });
-    }
-}
+$users = \App\Models\User::query()
+   ->setFilterAutoDiscovery(false)
+   ->filter()
+   ->get();
 ```
 
 ### Method 4: Nested filters
